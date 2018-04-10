@@ -58,9 +58,8 @@ val r1 = process("FOO") {
 val r2_message = "wooga"
 val r2 = process("FOO") {
     it ->
-        val s = 3.timesToString() { r2_message.toUpperCase() }
         when(it) {
-            "FOO" -> s
+            "FOO" -> 3.timesToString() { r2_message.toUpperCase() }
             else -> {
                 "fail"
             }
