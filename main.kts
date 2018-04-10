@@ -27,16 +27,6 @@ fun Int.times(block: () -> Unit): Unit {
     }
 }
 
-// (String function added by me, Iean)
-fun Int.timesToString(block: () -> String): String {
-    var acc = ""
-    for (it in 1..this) {
-        acc += block()
-    }
-
-    return acc
-}
-
 // Use this function
 fun process(message: String, block: (String) -> String): String {
     return ">>> ${message}: {" + block(message) + "}"
@@ -58,8 +48,10 @@ val r1 = process("FOO") {
 val r2_message = "wooga"
 val r2 = process("FOO") {
     it ->
+        var s = ""
+        3.times() { s += r2_message.toUpperCase() };
         when(it) {
-            "FOO" -> 3.timesToString() { r2_message.toUpperCase() }
+            "FOO" -> s
             else -> {
                 "fail"
             }
